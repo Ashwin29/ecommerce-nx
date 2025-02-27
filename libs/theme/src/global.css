@@ -1,0 +1,30 @@
+:root {
+  --background: #f8f8f8;
+  --secondaryBackground: #eaeaea;
+  --textPrimary: #1c1c1c;
+  --textSecondary: #525252;
+  --accent: #c9a86a;
+  --border: #d6d6d6;
+  --buttonPrimary: #0d0d0d;
+
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-button: 'Source Sans Pro', sans-serif;
+}
+
+.dark {
+  --background: #0d0d0d;
+  --secondaryBackground: #1a1a1a;
+  --textPrimary: #f1f1f1;
+  --textSecondary: #b0b0b0;
+  --accent: #c9a86a;
+  --border: #444444;
+  --buttonPrimary: #eaeaea;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--textPrimary);
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

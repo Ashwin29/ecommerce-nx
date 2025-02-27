@@ -1,0 +1,181 @@
+/* 1) Outer Navbar Container: Full Width */
+.navbar {
+  width: 100%;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 2) Inner Container: Centered Content */
+.navbar-content {
+  max-width: 1280px;
+  max-height: 9vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 32px;
+  color: var(--textPrimary);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Left Section: Logo & Desktop Links */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Fancy Logo */
+.fancy-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  background: linear-gradient(45deg, var(--accent), var(--textPrimary));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease-in-out;
+}
+.fancy-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Desktop Nav Links */
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--textPrimary);
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+  padding: 4px 8px;
+}
+.nav-link:hover {
+  color: var(--accent);
+}
+
+/* Right Section: Sign In, Cart, Theme Toggle */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Sign In (Desktop) */
+.sign-in {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--textPrimary);
+  transition: color 0.3s ease-in-out;
+}
+.sign-in:hover {
+  color: var(--accent);
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: var(--secondaryBg);
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+  padding: 4px;
+}
+
+.cart-icon:hover {
+  background-color: var(--accent);
+}
+
+/* Adjust the badge position so it's closer */
+.cart-count {
+  position: absolute;
+  top: -4px; /* Moved slightly closer */
+  right: -4px; /* Moved slightly closer */
+  background-color: var(--accent);
+  color: var(--background);
+  font-size: 10px; /* Slightly smaller font */
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: var(--secondaryBg);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  padding: 4px;
+  margin-left: auto; /* Pushes theme toggle to the far right */
+}
+.theme-toggle:hover {
+  background-color: var(--accent);
+}
+
+/* Hamburger (Mobile Menu Trigger) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.hamburger div {
+  width: 24px;
+  height: 3px;
+  background-color: var(--textPrimary);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Mobile Menu (Hidden by default) */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: var(--background);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.mobile-menu.open {
+  display: flex;
+}
+.mobile-menu a {
+  padding: 12px 0;
+  text-decoration: none;
+  color: var(--textPrimary);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Responsive Styles: Hide Desktop Links, Show Hamburger */
+@media (max-width: 1024px) {
+  .nav-links,
+  .sign-in {
+    display: none; /* Hide desktop links & sign-in on mobile */
+  }
+  .hamburger {
+    display: flex; /* Show hamburger on mobile */
+  }
+  .navbar-content {
+    padding: 12px 32px;
+  }
+}

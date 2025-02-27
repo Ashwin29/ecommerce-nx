@@ -1,0 +1,18 @@
+.orderSummary {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--secondaryBg);
+  margin-top: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.row:last-child {
+  margin-top: 16px;
+  font-weight: bold;
+}

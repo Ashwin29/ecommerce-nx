@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ecommerce-nx/mock-data": ["libs/mock-data/src/index.ts"],
+      "@ecommerce-nx/state-management": ["libs/state-management/src/index.ts"],
+      "@ecommerce-nx/theme": ["libs/theme/src/index.ts"],
+      "@ecommerce-nx/ui-components": ["libs/ui-components/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

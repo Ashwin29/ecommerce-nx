@@ -1,0 +1,15 @@
+.formField {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.error {
+  margin-top: 4px;
+  color: red; /* You could also use a theme variable */
+}

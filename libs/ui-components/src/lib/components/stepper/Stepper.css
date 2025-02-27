@@ -1,0 +1,18 @@
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  border-bottom: 2px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.step.active {
+  border-color: var(--accent);
+}

@@ -1,0 +1,37 @@
+.card {
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background-color: var(--background);
+  color: var(--textPrimary);
+  border: 1px solid var(--border);
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: var(--textSecondary);
+}

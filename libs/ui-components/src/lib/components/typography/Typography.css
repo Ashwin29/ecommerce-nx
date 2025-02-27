@@ -1,0 +1,58 @@
+.typography {
+  transition: color 0.3s ease-in-out;
+}
+
+.typography.h1 {
+  font-size: 48px;
+  font-weight: bold;
+  font-family: var(--font-heading);
+  color: var(--textPrimary);
+}
+
+.typography.h2 {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: var(--font-heading);
+  color: var(--textPrimary);
+}
+
+.typography.h3 {
+  font-size: 28px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  color: var(--textPrimary);
+}
+
+.typography.p {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--font-body);
+  color: var(--textPrimary);
+}
+
+/* Blockquote */
+.typography.blockquote {
+  font-size: 20px;
+  font-style: italic;
+  font-family: var(--font-body);
+  color: var(--textSecondary);
+  border-left: 4px solid var(--accent);
+  padding-left: 16px;
+  margin: 16px 0;
+}
+
+/* Caption */
+.typography.caption {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: var(--font-body);
+  color: var(--textSecondary);
+}
+
+/* Small text */
+.typography.small {
+  font-size: 12px;
+  font-weight: 300;
+  font-family: var(--font-body);
+  color: var(--textSecondary);
+}
