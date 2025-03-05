@@ -1,0 +1,32 @@
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Dark mode */
+.table.dark {
+  background: var(--dark-background);
+  color: var(--dark-text);
+}

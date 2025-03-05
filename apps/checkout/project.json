@@ -7,13 +7,15 @@
     "build": {
       "executor": "@nx/next:build",
       "options": {
-        "outputPath": "dist/apps/checkout"
+        "outputPath": "dist/apps/checkout",
+        "port": 4300
       }
     },
     "serve": {
       "executor": "@nx/next:server",
       "options": {
-        "buildTarget": "checkout:build"
+        "buildTarget": "checkout:build",
+        "port": 4300
       }
     }
   },

@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --background: #f8f8f8;
   --secondaryBackground: #eaeaea;
   --textPrimary: #1c1c1c;
@@ -20,6 +20,35 @@
   --accent: #c9a86a;
   --border: #444444;
   --buttonPrimary: #eaeaea;
+} */
+
+/* globals.css */
+:root {
+  --background: #f8f8f8;
+  --textPrimary: #1c1c1c;
+  --textSecondary: #525252;
+  --accent: #c9a86a;
+  --border: #d6d6d6;
+  --buttonPrimary: #1c1c1c;
+  --buttonPrimaryText: #ffffff;
+  --buttonSecondary: #c9a86a;
+  --buttonSecondaryText: #1c1c1c;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-button: 'Source Sans Pro', sans-serif;
+}
+
+/* Dark Mode Styles */
+[data-theme='dark'] {
+  --background: #1c1c1c;
+  --textPrimary: #ffffff;
+  --textSecondary: #d6d6d6;
+  --accent: #c9a86a;
+  --border: #525252;
+  --buttonPrimary: #ffffff;
+  --buttonPrimaryText: #1c1c1c;
+  --buttonSecondary: #c9a86a;
+  --buttonSecondaryText: #1c1c1c;
 }
 
 body {

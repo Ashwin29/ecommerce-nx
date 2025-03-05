@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+}
+
+.header.dark {
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: inherit;
+}
