@@ -1,0 +1,49 @@
+.cart-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background: var(--background) !important;
+}
+
+.cart-title {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+/* 🛒 Cart Layout (Grid System) */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+}
+
+/* Cart Items */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Order Summary Section */
+.cart-summary-section {
+  background: var(--background);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* Empty Cart */
+.empty-cart {
+  text-align: center;
+  padding: 50px;
+  background: var(--background);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* Make it Responsive */
+@media (max-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -3,4 +3,59 @@
   justify-content: flex-end;
   gap: 16px;
   margin-top: 24px;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  background-color: var(--background);
+  transition: background 0.3s ease-in-out;
+}
+
+/* Light Mode */
+.cartActions.light {
+  background-color: var(--background);
+}
+
+/* Dark Mode */
+.cartActions.dark {
+  background-color: var(--secondaryBg);
+}
+
+/* Button Styling */
+.updateCartButton {
+  background-color: var(--buttonSecondary);
+  color: var(--buttonSecondaryText);
+  padding: 12px 20px;
+  font-size: 1rem;
+  transition: background 0.3s ease-in-out;
+}
+
+.updateCartButton:hover {
+  background-color: var(--buttonPrimary);
+  color: var(--buttonPrimaryText);
+}
+
+.checkoutButton {
+  background-color: var(--buttonPrimary);
+  color: var(--buttonPrimaryText);
+  padding: 12px 20px;
+  font-size: 1rem;
+  transition: background 0.3s ease-in-out;
+}
+
+.checkoutButton:hover {
+  background-color: var(--accent);
+  color: var(--textPrimary);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .cartActions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .updateCartButton,
+  .checkoutButton {
+    width: 100%;
+    text-align: center;
+  }
 }

@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import './CartSummary.css';
-import { Typography } from '@ecommerce-nx/ui-components';
+import { Typography, Button } from '@ecommerce-nx/ui-components';
+import { useTheme } from '@ecommerce-nx/theme';
 
 interface CartSummaryProps {
   subtotal: number;
@@ -15,8 +18,18 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
   tax,
   total,
 }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className="cartSummary">
+    <div
+      className={`cartSummary ${theme}`}
+      role="region"
+      aria-labelledby="cart-summary-heading"
+    >
+      <Typography variant="h3" className="summaryTitle">
+        Order Summary
+      </Typography>
+
       <div className="summaryRow">
         <Typography variant="p">Subtotal:</Typography>
         <Typography variant="p">${subtotal.toFixed(2)}</Typography>
@@ -29,10 +42,20 @@ export const CartSummary: React.FC<CartSummaryProps> = ({
         <Typography variant="p">Tax:</Typography>
         <Typography variant="p">${tax.toFixed(2)}</Typography>
       </div>
-      <div className="summaryRow">
+      <div className="summaryRow totalRow">
         <Typography variant="h3">Total:</Typography>
         <Typography variant="h3">${total.toFixed(2)}</Typography>
       </div>
+
+      <Button
+        onClick={() => {
+          window.location.href = 'http://localhost:4300';
+        }}
+        variant="primary"
+        className="checkoutButton"
+      >
+        Proceed to Checkout
+      </Button>
     </div>
   );
 };

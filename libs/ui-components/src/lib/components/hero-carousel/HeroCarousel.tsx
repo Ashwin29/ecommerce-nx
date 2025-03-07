@@ -1,67 +1,103 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './HeroCarousel.css';
-import { useTheme } from '@ecommerce-nx/theme';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const images = [
+interface Slide {
+  imageUrl: string;
+  caption: string;
+}
+
+const slides: Slide[] = [
   {
-    id: 1,
-    image: 'https://picsum.photos/1920/1080',
+    imageUrl: `https://picsum.photos/1600/900?random=${Date.now()}`,
     caption: 'Biggest Sale of the Year!',
   },
   {
-    id: 2,
-    image: 'https://picsum.photos/1920/1080',
+    imageUrl: `https://picsum.photos/1600/900?random=${Date.now()}`,
     caption: 'Exclusive Discounts for You',
   },
   {
-    id: 3,
-    image: 'https://picsum.photos/1920/1080',
+    imageUrl: `https://picsum.photos/1600/900?random=${Date.now()}`,
     caption: 'New Arrivals Just Landed',
   },
 ];
-export function HeroCarousel() {
-  const [current, setCurrent] = useState(0);
-  const { theme } = useTheme();
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % images.length);
-  const prevSlide = () =>
-    setCurrent((prev) => (prev - 1 + images.length) % images.length);
+export const HeroCarousel: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    const autoScroll = setInterval(nextSlide, 5000);
-    return () => clearInterval(autoScroll);
-  }, []);
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000); // Auto-scroll every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [currentSlide]);
+
+  const handleNext = () => {
+    if (animating) return;
+    setAnimating(true);
+    setTimeout(() => setAnimating(false), 600);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const handlePrev = () => {
+    if (animating) return;
+    setAnimating(true);
+    setTimeout(() => setAnimating(false), 600);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   return (
-    <div className="hero-carousel" data-theme={theme}>
-      <div className="carousel-content">
-        <button className="arrow left" onClick={prevSlide}>
-          <FaChevronLeft />
-        </button>
-        <img
-          src={images[current].image}
-          alt={images[current].caption}
-          className="carousel-image"
-        />
-        <div className="text-overlay">
-          <h1>{images[current].caption}</h1>
-        </div>
-        <button className="arrow right" onClick={nextSlide}>
-          <FaChevronRight />
-        </button>
+    <div className="hero-carousel">
+      {/* Navigation Arrows */}
+      <button
+        className="arrow left"
+        onClick={handlePrev}
+        aria-label="Previous slide"
+      >
+        ❮
+      </button>
+
+      <div className="carousel-track">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`carousel-slide ${
+              index === currentSlide ? 'active' : 'hidden'
+            }`}
+          >
+            <img src={slide.imageUrl} alt={slide.caption} />
+
+            <div className="text-overlay">
+              <h2 className="carousel-text">{slide.caption}</h2>
+            </div>
+          </div>
+        ))}
       </div>
+
+      {/* Navigation Arrows */}
+      <button
+        className="arrow right"
+        onClick={handleNext}
+        aria-label="Next slide"
+      >
+        ❯
+      </button>
+
+      {/* Dots Navigation */}
       <div className="carousel-dots">
-        {images.map((_, index) => (
+        {slides.map((_, index) => (
           <span
             key={index}
-            className={index === current ? 'dot active' : 'dot'}
-            onClick={() => setCurrent(index)}
-          />
+            className={`dot ${index === currentSlide ? 'active' : ''}`}
+            onClick={() => setCurrentSlide(index)}
+          ></span>
         ))}
       </div>
     </div>
   );
-}
+};
+
+export default HeroCarousel;

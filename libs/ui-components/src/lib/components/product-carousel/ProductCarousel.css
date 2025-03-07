@@ -1,29 +1,110 @@
 .product-carousel {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--background);
+  color: var(--textPrimary);
+}
+
+.carousel-wrapper {
+  width: 80%;
+  max-width: 1000px;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .carousel {
   display: flex;
-  overflow-x: auto;
+  gap: 16px;
+  padding: 8px;
   scroll-behavior: smooth;
-  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .product-card {
-  min-width: 200px;
-  border: 1px solid var(--border-color);
-  padding: 10px;
+  flex: 0 0 auto;
+  width: 250px;
+  border-radius: 8px;
+  padding: 12px;
   text-align: center;
-  background: var(--primary-bg);
-  color: var(--text-primary);
+  transition: transform 0.3s ease-in-out;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 8px;
+  color: var(--textPrimary);
+}
+
+.product-price {
+  font-size: 0.9rem;
+  color: var(--accent);
 }
 
 .nav {
-  background: none;
+  background-color: var(--buttonPrimary);
   border: none;
+  color: var(--buttonPrimaryText);
   cursor: pointer;
-  font-size: 24px;
-  color: var(--text-primary);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease-in-out;
+}
+
+.nav:hover {
+  background-color: var(--buttonSecondary);
+  color: var(--buttonSecondaryText);
+}
+
+.nav.left {
+  position: absolute;
+  left: 10px;
+}
+
+.nav.right {
+  position: absolute;
+  right: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .product-card {
+    width: 180px;
+  }
+
+  .product-image {
+    height: 140px;
+  }
+
+  .carousel-wrapper {
+    width: 90%;
+  }
+
+  .nav {
+    padding: 8px;
+  }
 }

@@ -25,13 +25,13 @@ export const Navbar: React.FC = () => {
         {/* Left Section: Logo & Desktop Links */}
         <div className="nav-left">
           {/* Fancy Logo */}
-          <a href="/" className="fancy-logo">
+          <a href="http://localhost:3000/" className="fancy-logo">
             <Typography variant="h2">E-Shop</Typography>
           </a>
 
           {/* Desktop Links */}
           <div className="nav-links">
-            <a href="/" className="nav-link">
+            <a href="http://localhost:3000/" className="nav-link">
               <Typography variant="p">Home</Typography>
             </a>
             <a href="/categories" className="nav-link">

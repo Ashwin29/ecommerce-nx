@@ -3,6 +3,7 @@
 import React from 'react';
 import { Button, Typography } from '@ecommerce-nx/ui-components';
 import './CartItem.css';
+import { useTheme } from '@ecommerce-nx/theme';
 
 interface CartItemProps {
   productImage: string;
@@ -21,29 +22,50 @@ export const CartItem: React.FC<CartItemProps> = ({
   onRemove,
   onQuantityChange,
 }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className="cartItem">
-      <img src={productImage} alt={productName} className="productImage" />
+    <div className={`cartItem ${theme}`} role="listitem">
+      <img
+        src={productImage}
+        alt={`Image of ${productName}`}
+        className="productImage"
+      />
       <div className="itemDetails">
-        <Typography variant="h3">{productName}</Typography>
-        <Typography variant="p">${price.toFixed(2)}</Typography>
+        <Typography variant="h3" className="productName">
+          {productName}
+        </Typography>
+        <Typography variant="p" className="productPrice">
+          ${price.toFixed(2)}
+        </Typography>
         <div className="quantityControl">
           <Button
             onClick={() => onQuantityChange(quantity - 1)}
             variant="secondary"
             disabled={quantity <= 1}
+            aria-label="Decrease quantity"
+            className="quantityBtn"
           >
             -
           </Button>
-          <Typography variant="p">{quantity}</Typography>
+          <Typography variant="p" className="quantity" aria-live="polite">
+            {quantity}
+          </Typography>
           <Button
             onClick={() => onQuantityChange(quantity + 1)}
             variant="secondary"
+            aria-label="Increase quantity"
+            className="quantityBtn"
           >
             +
           </Button>
         </div>
-        <Button onClick={onRemove} variant="secondary">
+        <Button
+          onClick={onRemove}
+          variant="secondary"
+          className="removeButton"
+          aria-label={`Remove ${productName} from cart`}
+        >
           Remove
         </Button>
       </div>

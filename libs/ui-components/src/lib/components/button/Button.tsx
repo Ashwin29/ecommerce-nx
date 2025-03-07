@@ -6,6 +6,7 @@ interface ButtonProps {
   onClick: () => void;
   variant?: 'primary' | 'secondary';
   disabled?: boolean;
+  className?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -13,12 +14,13 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   variant = 'primary',
   disabled,
+  className,
 }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`button ${variant}`}
+      className={`button ${variant} ${className}`}
     >
       {children}
     </button>

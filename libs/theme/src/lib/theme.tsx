@@ -22,32 +22,48 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() =>
-    typeof window !== 'undefined' && localStorage.getItem('theme')
-      ? (localStorage.getItem('theme') as 'light' | 'dark')
-      : 'light'
-  );
+  const [theme, setTheme] = useState<'light' | 'dark' | null>(null); // Prevent SSR hydration issues
 
+  // Set theme on mount & listen for changes
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
+    const storedTheme = localStorage.getItem('theme') as
+      | 'light'
+      | 'dark'
+      | null;
+    const initialTheme = storedTheme || 'light';
+    applyTheme(initialTheme);
+    setTheme(initialTheme);
+  }, []);
 
-      // Apply colors
-      Object.entries(colors[theme]).forEach(([key, value]) => {
-        document.documentElement.style.setProperty(`--${key}`, value as string);
-      });
+  // Function to apply theme styles dynamically
+  const applyTheme = (theme: 'light' | 'dark') => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
 
-      // Apply typography
-      Object.entries(typography.fonts).forEach(([key, value]) => {
-        document.documentElement.style.setProperty(`--font-${key}`, value);
-      });
+    // Apply colors
+    Object.entries(colors[theme]).forEach(([key, value]) => {
+      document.documentElement.style.setProperty(`--${key}`, value as string);
+    });
 
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
+    // Apply typography
+    Object.entries(typography.fonts).forEach(([key, value]) => {
+      document.documentElement.style.setProperty(`--font-${key}`, value);
+    });
+
+    localStorage.setItem('theme', theme);
+  };
+
+  // Toggle function
+  const toggleTheme = () => {
+    if (!theme) return; // Prevent toggling before mount
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    applyTheme(newTheme);
+  };
+
+  if (!theme) return null; // Prevent rendering before hydration completes
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme: toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -4,15 +4,35 @@
   padding: 16px;
   border-bottom: 1px solid var(--border);
   align-items: center;
+  transition: background 0.3s ease-in-out;
 }
 
+/* Light Mode */
+.cartItem.light {
+  background-color: var(--background);
+  color: var(--textPrimary);
+}
+
+/* Dark Mode */
+.cartItem.dark {
+  background-color: var(--secondaryBg);
+  color: var(--textSecondary);
+}
+
+/* Product Image */
 .productImage {
   width: 80px;
   height: 80px;
   object-fit: cover;
   border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
 }
 
+.productImage:hover {
+  transform: scale(1.05);
+}
+
+/* Item Details */
 .itemDetails {
   flex: 1;
   display: flex;
@@ -20,8 +40,72 @@
   gap: 8px;
 }
 
+/* Typography Adjustments */
+.productName {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.productPrice {
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+/* Quantity Control */
 .quantityControl {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.quantity {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.quantityBtn {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+/* Remove Button */
+.removeButton {
+  background-color: var(--buttonSecondary);
+  color: var(--buttonSecondaryText);
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 0.9rem;
+  transition: background 0.3s ease-in-out;
+  width: 100px;
+  height: 44px;
+}
+
+.removeButton:hover {
+  background-color: var(--buttonPrimary);
+  color: var(--buttonPrimaryText);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .cartItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .productImage {
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+  }
+
+  .quantityControl {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .removeButton {
+    text-align: center;
+    width: 100px;
+    height: 44px;
+  }
 }
